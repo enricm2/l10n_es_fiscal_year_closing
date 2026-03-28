@@ -1,0 +1,31 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Odoo
+*.pot
+i18n_backup/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Packages
+*.zip
+*.tar.gz
+
+# Logs
+*.log
+
+# Temporary files
+uniasser_icon_512.png

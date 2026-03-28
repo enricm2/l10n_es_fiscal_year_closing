@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fiscalyear_closing_form" model="ir.ui.view">
+        <field name="name">account.fiscalyear.closing.form</field>
+        <field name="model">account.fiscalyear.closing</field>
+        <field name="arch" type="xml">
+            <form string="Cierre de Ejercicio">
+                <header>
+                    <button name="action_calculate" string="Calcular" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="run_closing_process" string="Generar Asientos" type="object" class="oe_highlight" invisible="state != 'calculated'"/>
+                    <button name="action_cancel_draft" string="Cancelar Cierre" type="object" confirm="¿Está seguro de cancelar este cierre? Se eliminarán todos los asientos generados." invisible="state not in ['done', 'calculated']"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,calculated,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Ej: Cierre 2024"/></h1>
+                    </div>
+                    <group>
+                        <group string="Periodo y Apertura">
+                            <field name="date_start"/>
+                            <field name="date_stop"/>
+                            <field name="date_opening"/>
+                        </group>
+                        <group string="Configuración">
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="pyg_account_id"/>
+                        </group>
+                    </group>
+                    <group string="Diarios">
+                        <group>
+                            <field name="lp_journal_id"/>
+                            <field name="closing_journal_id"/>
+                        </group>
+                        <group>
+                            <field name="opening_journal_id"/>
+                        </group>
+                    </group>
+                    <group string="Opciones">
+                        <group>
+                            <field name="create_loss_and_profit"/>
+                            <field name="create_closing"/>
+                        </group>
+                        <group>
+                            <field name="create_opening"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Asientos Generados" name="moves">
+                            <group>
+                                <group>
+                                    <field name="lp_move_id" readonly="1"/>
+                                    <field name="closing_move_id" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="opening_move_id" readonly="1"/>
+                                </group>
+                            </group>
+                            <group string="Acciones sobre Asientos">
+                                <p class="text-muted">
+                                    Los asientos se generan automáticamente al ejecutar el proceso de cierre.
+                                    Use los botones principales para ejecutar o cancelar el cierre.
+                                </p>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_fiscalyear_closing_list" model="ir.ui.view">
+        <field name="name">account.fiscalyear.closing.list</field>
+        <field name="model">account.fiscalyear.closing</field>
+        <field name="arch" type="xml">
+            <list string="Cierres de Ejercicio">
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="date_start"/>
+                <field name="date_stop"/>
+                <field name="state"/>
+                <field name="lp_move_id" optional="show"/>
+                <field name="closing_move_id" optional="show"/>
+                <field name="opening_move_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_fiscalyear_closing" model="ir.actions.act_window">
+        <field name="name">Cierre de Ejercicio</field>
+        <field name="res_model">account.fiscalyear.closing</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Cree su primer cierre de ejercicio fiscal
+            </p>
+            <p>
+                Utilice esta herramienta para generar los asientos de regularización, 
+                cierre y apertura de ejercicio según la normativa contable española.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_fiscalyear_closing" 
+              name="Cierre de Ejercicio" 
+              parent="account.menu_finance_entries" 
+              action="action_fiscalyear_closing" 
+              sequence="100"/>
+</odoo>

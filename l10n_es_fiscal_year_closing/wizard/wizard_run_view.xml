@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fyc_run_wizard_v5" model="ir.ui.view">
+        <field name="name">account.fiscalyear.closing.run.wizard.v5</field>
+        <field name="model">account.fiscalyear.closing.run</field>
+        <field name="arch" type="xml">
+            <form string="Ejecutar Cierre">
+                <sheet>
+                    <div class="alert alert-info">
+                        Se procederá a la creación de los asientos de Regularización, Cierre y Apertura.
+                    </div>
+                    <group>
+                        <field name="fyc_id" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="create_closing_asientos" string="Confirmar" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_wizard_fyc_run" model="ir.actions.act_window">
+        <field name="name">Ejecutar Cierre</field>
+        <field name="res_model">account.fiscalyear.closing.run</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_fyc_run_wizard_v5"/>
+    </record>
+
+    <record id="view_fyc_cancel_wizard_v5" model="ir.ui.view">
+        <field name="name">account.fiscalyear.closing.cancel.wizard.v5</field>
+        <field name="model">account.fiscalyear.closing.cancel_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reabrir Ejercicio">
+                <sheet>
+                    <group>
+                        <p>Esta acción eliminará los asientos generados por este proceso. ¿Continuar?</p>
+                        <field name="confirm" string="Confirmo la eliminación de asientos"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="run_cancel" string="Eliminar y Reabrir" type="object" class="btn-danger"/>
+                    <button string="Cerrar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cancel_fyc_wizard" model="ir.actions.act_window">
+        <field name="name">Cancelar Cierre</field>
+        <field name="res_model">account.fiscalyear.closing.cancel_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_fyc_cancel_wizard_v5"/>
+    </record>
+</odoo>

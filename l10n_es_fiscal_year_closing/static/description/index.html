@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cierre de Ejercicio Fiscal España</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .feature h3 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        .feature p {
+            margin: 10px 0 0 0;
+            color: #666;
+        }
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 60px;
+            position: relative;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px 5px 5px 0;
+        }
+        .screenshot {
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .author-info {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🇪🇸 Cierre de Ejercicio Fiscal</h1>
+        <p>Solución completa para el cierre contable según normativa española</p>
+        <div style="margin-top: 20px;">
+            <span class="badge">Odoo 18</span>
+            <span class="badge">PGC España</span>
+            <span class="badge">Multi-compañía</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>✨ Características Principales</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>📊 Asiento de Regularización</h3>
+                <p>Regulariza automáticamente las cuentas de PyG (grupos 6 y 7) contra la cuenta 129.</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Asiento de Cierre</h3>
+                <p>Cierra todas las cuentas del balance dejando los saldos a cero al final del ejercicio.</p>
+            </div>
+            <div class="feature">
+                <h3>🚀 Asiento de Apertura</h3>
+                <p>Abre el nuevo ejercicio con los saldos correctos del balance anterior.</p>
+            </div>
+            <div class="feature">
+                <h3>⚙️ Gestión Automática</h3>
+                <p>Crea automáticamente los diarios REGUL, CIERRE y APERT si no existen.</p>
+            </div>
+            <div class="feature">
+                <h3>🔄 Proceso Reversible</h3>
+                <p>Cancela el cierre y elimina los asientos de forma segura cuando sea necesario.</p>
+            </div>
+            <div class="feature">
+                <h3>📝 Auditoría Completa</h3>
+                <p>Seguimiento completo con integración en el sistema de mensajería de Odoo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Cómo Funciona</h2>
+        <ol class="steps">
+            <li>
+                <strong>Configure el Cierre</strong><br>
+                Defina las fechas de inicio, fin y apertura del ejercicio. Seleccione los diarios correspondientes.
+            </li>
+            <li>
+                <strong>Calcule y Valide</strong><br>
+                El sistema valida la configuración y verifica que todas las cuentas necesarias existen.
+            </li>
+            <li>
+                <strong>Genere los Asientos</strong><br>
+                Con un solo clic, el módulo genera y valida automáticamente los tres asientos contables.
+            </li>
+            <li>
+                <strong>Revise los Resultados</strong><br>
+                Acceda directamente a los asientos generados desde la interfaz de cierre.
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>📋 Normativa Cumplida</h2>
+        <p>Este módulo implementa el proceso de cierre según el <strong>Plan General Contable (PGC)</strong> español:</p>
+        <ul>
+            <li><strong>Grupos 6 y 7:</strong> Cuentas de gastos e ingresos (regularización)</li>
+            <li><strong>Cuenta 129:</strong> Resultado del ejercicio</li>
+            <li><strong>Grupos 1-5:</strong> Cuentas de balance (activo, pasivo, patrimonio neto)</li>
+            <li><strong>Asientos de cierre y apertura:</strong> Según normativa contable española</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <strong>⚠️ Importante:</strong> Antes de ejecutar el cierre, asegúrese de que:
+        <ul>
+            <li>Todos los asientos del ejercicio están validados</li>
+            <li>Las conciliaciones bancarias están completas</li>
+            <li>La cuenta 129 existe en su plan contable</li>
+            <li>Ha realizado una copia de seguridad de su base de datos</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🛠️ Instalación y Configuración</h2>
+        <p><strong>Instalación:</strong></p>
+        <ol>
+            <li>Descargue el módulo desde la tienda de Odoo</li>
+            <li>Instálelo desde Aplicaciones en su instancia de Odoo 18</li>
+            <li>Los diarios necesarios se crearán automáticamente</li>
+        </ol>
+        
+        <p><strong>Configuración:</strong></p>
+        <ul>
+            <li>No requiere configuración adicional</li>
+            <li>Verifique que su plan contable incluye la cuenta 129</li>
+            <li>Los diarios REGUL, CIERRE y APERT se crean automáticamente en la instalación</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>💼 Casos de Uso</h2>
+        <ul>
+            <li><strong>Empresas españolas:</strong> Cumplimiento del PGC para cierre anual</li>
+            <li><strong>Asesorías y gestorías:</strong> Gestión de cierres para múltiples clientes</li>
+            <li><strong>Departamentos financieros:</strong> Automatización del proceso de cierre</li>
+            <li><strong>Auditorías:</strong> Trazabilidad completa del proceso de cierre</li>
+        </ul>
+    </div>
+
+    <div class="section author-info">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="uniasser_logo.png" alt="Uniasser Consulting" style="max-width: 200px; height: auto;">
+        </div>
+        <h2>👨‍💻 Autor y Soporte</h2>
+        <p><strong>Desarrollado por:</strong> Uniasser Consulting SL</p>
+        <p><strong>Autor:</strong> Enric J. Marti Albella</p>
+        <p><strong>Licencia:</strong> LGPL-3</p>
+        <p><strong>Versión:</strong> 18.0.1.0</p>
+        <p><strong>Precio:</strong> 79,00 EUR + IVA</p>
+        <p style="margin-top: 15px; font-size: 0.95em; color: #666;">
+            <em>IVA aplicable según normativa: intracomunitario para UE, exento para exportaciones fuera de UE</em>
+        </p>
+    </div>
+
+    <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px;">
+        <h2 style="color: white; margin-top: 0;">📞 Soporte Profesional Incluido</h2>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 6px; margin: 20px 0;">
+            <h3 style="color: white; margin-top: 0;">Canales de Soporte</h3>
+            <p style="font-size: 1.1em; margin: 10px 0;">
+                📧 <strong>Email:</strong> info@uniasser.com<br>
+                📱 <strong>WhatsApp:</strong> +34 722 77 40 75<br>
+                🌐 <strong>Web:</strong> https://www.uniasser.com
+            </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 6px; margin: 20px 0;">
+            <h3 style="color: white; margin-top: 0;">Tiempo de Respuesta</h3>
+            <p style="font-size: 1.1em;">
+                ⚡ <strong>Generalmente:</strong> Menos de 2 horas<br>
+                🕐 <strong>Máximo garantizado:</strong> 24 horas
+            </p>
+            <p style="font-size: 0.95em; margin-top: 10px;">
+                Soporte para instalación, configuración y dudas técnicas del módulo
+            </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 6px;">
+            <h3 style="color: white; margin-top: 0;">🏢 Información Fiscal</h3>
+            <p style="font-size: 0.95em; line-height: 1.6;">
+                <strong>Vendedor:</strong> Uniasser Consulting S.L.<br>
+                <strong>CIF:</strong> ESB12331039<br>
+                <strong>Domicilio:</strong> C/ Ausiàs March, 11<br>
+                12540 Vila-real (Castellón), España
+            </p>
+            <p style="font-size: 0.9em; margin-top: 15px; font-style: italic;">
+                ✅ Factura completa con desglose de IVA para todos los clientes (España e internacionales)
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔄 Adaptación a Otras Versiones de Odoo</h2>
+        <p>Este módulo está desarrollado para <strong>Odoo 18.0</strong>.</p>
+        <p><strong>¿Necesita este módulo para otra versión de Odoo?</strong></p>
+        <p>Bajo petición, podemos adaptar este módulo a las siguientes versiones:</p>
+        <ul>
+            <li>✅ <strong>Odoo 16.0</strong></li>
+            <li>✅ <strong>Odoo 17.0</strong></li>
+            <li>✅ <strong>Odoo 19.0</strong></li>
+        </ul>
+        <p style="margin-top: 15px;">
+            <strong>Contacte con nosotros</strong> para solicitar la adaptación a su versión específica de Odoo.
+            La adaptación mantiene todas las funcionalidades y características del módulo.
+        </p>
+        <p style="margin-top: 10px;">
+            📧 <strong>Email:</strong> info@uniasser.com<br>
+            📱 <strong>WhatsApp:</strong> +34 722 77 40 75<br>
+            🌐 <strong>Web:</strong> https://www.uniasser.com
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>🌍 Traducciones Disponibles</h2>
+        <p>El módulo incluye traducciones completas para:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 15px;">
+            <span>🇪🇸 Español</span>
+            <span>🇬🇧 English</span>
+            <span>🇫🇷 Français</span>
+            <span>🇩🇪 Deutsch</span>
+            <span>🇵🇹 Português</span>
+            <span>🇮🇹 Italiano</span>
+            <span>🇳🇱 Nederlands</span>
+            <span>🇵🇱 Polski</span>
+            <span>🇷🇺 Русский</span>
+            <span>🇹🇷 Türkçe</span>
+            <span>🇨🇳 中文</span>
+            <span>Y más...</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024-2025 Uniasser Consulting SL - Todos los derechos reservados</p>
+        <p>Este módulo está licenciado bajo LGPL-3</p>
+    </div>
+</body>
+</html>
